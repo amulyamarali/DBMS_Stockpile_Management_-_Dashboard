@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MySQL Table Viewer</title>
+</head>
+<body>
+    <h1>Table Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <!-- Add more headers for each column -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.column1 }}</td>
+                <td>{{ row.column2 }}</td>
+                <!-- Add more cells for each column -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Custom Query</h2>
+    <form action="/query" method="post">
+        <textarea name="query" rows="4" cols="50"></textarea>
+        <!-- <input type="submit" value="Execute Query"> -->
+        <!-- # inputs for cust_id, cust_name, location_id, ph_no -->
+        <input type="text" name="cust_id" placeholder="cust_id">
+        <input type="text" name="cust_name" placeholder="cust_name">
+        <input type="text" name="location_id" placeholder="location_id">
+        <input type="text" name="ph_no" placeholder="ph_no">
+        <input type="submit" value="Insert">
+
+    </form>
+</body>
+</html>

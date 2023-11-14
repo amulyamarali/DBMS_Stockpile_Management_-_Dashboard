@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query Result</title>
+</head>
+<body>
+    <h1>Query Result</h1>
+    <table>
+        <thead>
+            {% for key in query_result[0].keys() %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for row in query_result %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
