@@ -4,6 +4,7 @@ from time import sleep
 import time
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
 
 # st.session_state['count'] = 0
 
@@ -150,11 +151,17 @@ if add_selectbox == "Order":
     st.write(f'Your total amount is: {total}')
     details['total'] = total
 
-    details['invoice_id'] = 'Invoice022'
-    details['order_no'] = 'Order022' 
-    details['location_id'] = 'Loc001'
+    q = "select location_id, cust_name from customer where cust_id = %s"
+    cursor.execute(q, (cust_id,))
+    data = cursor.fetchall()
+    details['location_id'] = data[0]['location_id']
+    details['cust_name'] = data[0]['cust_name']
+
+    num = random.randint(100, 1000)
+
+    details['invoice_id'] = 'Invoice'+str(num)
+    details['order_no'] = 'Order'+str(num) 
     details['ord_date'] = date
-    details['cust_name'] = 'Olivia White'
 
     if st.button("Order"):
         try:
